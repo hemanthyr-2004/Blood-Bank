@@ -1,0 +1,204 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Blood Bank Management</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-danger">
+        <div class="container-fluid ">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Blood Bank Management</a>
+            </div>
+
+            <div class="nav navbar-right">
+               
+                
+        <ul class="nav justify-content-end">
+            
+              <a class="navbar-brand text-dark" style="color: black;">Hello, {{request.user }}</a>
+            
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'logout' %}"style="color: black;" >Logout</a>
+            </li>
+          </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">You dont have to be a doctor to save lives!</h1>
+       
+        <p class="lead">Share a little. Care a little. Donate blood. It's simple, its's safe and it saves life.</p>
+
+       
+        
+    </div>
+
+    <div class="jumbotron bg-gray ">
+        <h1 class="display-5 text-center">Current Availability </h1>
+       
+        <div class="container text-center">
+            <div class="row m-5">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">A+</h5>
+                          
+                          <p><strong>{{ c_ap }}</strong></p>
+                          <p>This blood is the second most frequently occurring blood type. Thirty-four of every 100 people have A+.</p>
+                          {% if c_ap > 0 %}
+                          <a href="{% url 'a_positive' %}" class="btn btn-primary">Book Appointment</a>
+                          
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">B+</h5>
+                          <p><strong>{{ c_bp }}</strong></p>
+                          <p class="card-text">About 9% of the population have B positive blood. B+ rbcs can be given to both B+ and AB+ patients.</p>
+                          {% if c_bp > 0 %}
+                          <a href="{% url 'b_positive' %}" class="btn btn-primary">Book Appointment</a>
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">O+</h5>
+                          <p><strong>{{ c_op }}</strong></p>
+                          <p class="card-text">The power of positivity: O+ can give red blood cells to any Rh positive blood types.</p>
+                          {% if c_op > 0 %}
+                          <a href="{% url 'o_positive' %}" class="btn btn-primary">Book Appointment</a>
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                </div>
+              </div>
+
+              <div class="row m-5">
+                  
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">A-</h5>
+                          <p><strong>{{ c_an }}</strong></p>
+                          <p class="card-text">A- platelets are particularly important because they can be given to people from all blood groups (Universal platelet type).</p>
+                          {% if c_an > 0 %}
+                          <a href="{% url 'a_negative' %}" class="btn btn-primary">Book Appointment</a>
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">B-</h5>
+                          <p><strong>{{ c_bn }}</strong></p>
+                          <p class="card-text">B- blood is an extremely rare blood type. Only 2% of the population has B- blood.</p>
+                          {% if c_bn > 0  %}
+                          <a href="{% url 'b_negative' %}" class="btn btn-primary">Book Appointment</a>
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                </div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">O-</h5>
+                          <p><strong>{{ c_on }}</strong></p>
+                          <p class="card-text">O negative is the most common blood type used for transfusions when the blood type is unknown.</p>
+                          {% if c_on > 0 %}
+                          <a href="{% url 'o_negative' %}" class="btn btn-primary">Book Appointment</a>
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                </div>
+
+              </div>
+
+
+            <div class="row m-5">
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">AB+</h5>
+                          <p><strong>{{ c_abp }}</strong></p>
+                          <p class="card-text">AB+ type is known as the “universal recipient” because AB+ patients can receive red blood cells from all blood types.</p>
+                          {% if c_abp > 0 %}
+                          <a href="{% url 'ab_positive' %}" class="btn btn-primary">Book Appointment</a>
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                </div>
+                <div class="col"></div>
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">AB-</h5>
+                          <p><strong>{{ c_abn }}</strong></p>
+                          <p class="card-text">AB- is the rarest blood type in the ABO blood group, accounting for just 1% of our blood donors.</p>
+                          {% if c_abn > 0 %}
+                          <a href="{% url 'ab_negative' %}" class="btn btn-primary">Book Appointment</a>
+                          {% else %}
+                          <p style="color: coral;">Sorry, No donors available. Please check in a while</p>
+                          {% endif %}
+                        </div>
+                      </div>
+                </div>
+         
+            </div>
+          </div>
+
+
+        
+      </div>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,23 @@
+{% extends 'homepage/base.html' %}
+
+<style type="text/css">
+    #card{
+        background-color: #5AC18E;
+    }
+
+</style>
+
+{% block content %}
+
+   
+   <div class="card_container">
+    <div class="card mx-auto my-lg-5 " style="width: 18rem;" id="card">
+        <div class="card-body">
+            <h5 class="card-title text-center">Welcome!</h5>
+            
+            <a href="{% url 'donatePage' %}" class="btn btn-primary btn-lg active m-3" role="button" aria-pressed="true">Donate</a>
+            <a href="{% url 'login' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Request</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'homepage/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style type="text/css"> 
+body{
+    background-color: #FF3131;
+}
+
+
+</style>
+
+
+<div class="card mt-5 ml-5 " style="width: 25rem;">
+    <div class="card-body">
+      <h5 class="card-title">Please enter your details here</h5>
+      <form method="POST">
+        {% csrf_token %}
+        
+        <table>{{ form }}</table>
+
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <button type="submit" class="btn btn-success">Submit</button>
+        
+    </form>
+     
+    </div>
+  </div>
+
+  <!-- <img src="{% static 'images/bg6.jpeg' %}" alt=" image"> -->
+   
+
+    {% endblock %}
